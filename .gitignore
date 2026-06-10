@@ -1,0 +1,15 @@
+# Engagement folders may contain customer-confidential data.
+# Partners should uncomment the line below before committing real engagements,
+# or store engagement folders in a separate private repo.
+# agent-output/*/
+# !agent-output/_template/
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local environment
+.env
+.env.local
