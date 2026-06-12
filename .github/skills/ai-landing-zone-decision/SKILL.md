@@ -1,6 +1,6 @@
 ---
 name: ai-landing-zone-decision
-description: Decision logic for choosing between Azure AI Landing Zone for Foundry, AI Gateway LZ (APIM-centric), AI Hub LZ (legacy — de-recommended), Lightweight Accelerator, and Custom Build. Use when recommending an Azure AI pattern.
+description: Decision logic for choosing between Azure AI Landing Zone for Foundry, AI Gateway LZ (APIM-centric), Lightweight Accelerator, and Custom Build. Use when recommending an Azure AI pattern.
 ---
 
 # Azure AI Pattern Decision Skill
@@ -11,15 +11,15 @@ Reference logic for the Pattern Selector agent. Captures partner field experienc
 
 ## The five patterns at a glance
 
-> **Important distinction — Gateway LZ vs Hub LZ solve different problems.**
-> - **AI Gateway LZ** controls *how external consumers reach AI models* (APIM layer). It is complementary to Foundry LZ, not an alternative.
-> - **AI Hub LZ** controls *how internal teams share a Foundry resource* (Foundry organisation layer). Microsoft's current baseline Foundry LZ guidance explicitly de-recommends the centralised Hub-sharing topology; the Hub-Project model now lives under `foundry-classic` docs. Both patterns can be used together.
+> **Important distinction — the AI Gateway LZ is complementary to the Foundry LZ, not an alternative.**
+> - **AI Gateway LZ** controls *how external consumers reach AI models* (APIM layer). It sits in front of the Foundry LZ; the two are used together.
+>
+> **Note on the legacy Hub-Project topology.** Microsoft's current baseline Foundry LZ guidance explicitly de-recommends the centralised Foundry Hub-sharing topology (the Hub-Project model now lives under `foundry-classic` docs). Recommend the workload-owned Foundry LZ instead; this guide does not treat Hub-Project as a selectable pattern.
 
 | Pattern | Best when | Watch out for |
 |---------|-----------|---------------|
 | **AI Landing Zone for Foundry** | Enterprise workload, regulated or production-grade, CAF Platform LZ exists or is planned, private networking required | Heavier upfront; expects platform LZ underneath; AVM module versions move fast |
 | **AI Gateway Landing Zone** | Multiple AI consumers, multi-model routing, quotas/throttling, central observability, BYO models | Adds APIM latency and cost; needs an API platform owner. **Not an alternative to Foundry LZ — sits in front of it.** |
-| **AI Hub Landing Zone** ⚠️ Legacy | Customer already has Hub-Project investment and cannot migrate; greenfield use is not recommended | **Microsoft's current baseline Foundry LZ guidance explicitly de-recommends the centralised Hub topology.** Hub-Project docs now live under `foundry-classic`. Verify before proposing. |
 | **Lightweight Accelerator** | 4-8 week PoC, single team, no compliance scope, willingness to redo for prod | Do not let this leak into prod — it has no governance bones |
 | **Custom Build** | Edge / sovereign / on-prem hybrid / highly specialized SKUs / scenarios no LZ supports | You own all the design decisions an LZ would have made for you |
 
@@ -41,8 +41,8 @@ START
   │
   ├─ Customer insists on Hub-Project shared Foundry topology?
   │     ──► CHALLENGE FIRST (see Disqualifiers)
-  │       If truly needed: AI Hub Landing Zone (legacy / foundry-classic)
-  │       Flag: current Microsoft guidance recommends workload-owned Foundry
+  │       Recommend workload-owned Foundry LZ; the Hub-Project topology
+  │       is de-recommended and is not a selectable pattern here
   │
   ├─ PoC, single team, ≤ 8 weeks, no compliance scope?
   │     ──► Lightweight Accelerator
@@ -61,7 +61,7 @@ A disqualifier overrides the tree's recommendation.
 - **On-prem or edge inference required** → none of the LZs cover this. Custom Build with Azure Arc / Azure Local guidance.
 - **No internet egress allowed** → check that the chosen pattern's required Microsoft endpoints are reachable via Private Link or service tags. Some Foundry features need egress.
 - **Customer demands single-region with active-active HA** → not all AI services support this; verify per service.
-- **Customer asks for Hub-Project shared Foundry topology (greenfield)** → challenge against current Microsoft guidance. The [Baseline Foundry LZ architecture](https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone) explicitly states: *"we don't recommend this topology… the workload as the owner of the Foundry resource [is] the recommended approach."* Hub-Project docs now live under `foundry-classic`. Recommend workload-owned Foundry LZ instead; only fall back to AI Hub LZ if there is an existing investment that cannot be migrated.
+- **Customer asks for Hub-Project shared Foundry topology (greenfield)** → challenge against current Microsoft guidance. The [Baseline Foundry LZ architecture](https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone) explicitly states: *"we don't recommend this topology… the workload as the owner of the Foundry resource [is] the recommended approach."* Hub-Project docs now live under `foundry-classic`. Recommend workload-owned Foundry LZ instead. If an existing Hub-Project investment genuinely cannot be migrated, treat it as a documented Custom Build constraint rather than a recommended pattern.
 
 ## Scoring rubric (for the decision matrix)
 

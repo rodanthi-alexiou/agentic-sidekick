@@ -1,0 +1,12 @@
+graph LR
+  U["EU users<br/>Students / Academics / Researchers"] --> AGW["Application Gateway + WAF"]
+  IDP["Microsoft Entra ID<br/>federated institutional IdPs"] --> AGW
+  AGW --> APP["App Service<br/>Chat UI + Orchestration"]
+  APP -->|Agent invocation| FND["Microsoft Foundry project<br/>Agent Service"]
+  FND -->|Inference| MODELS["Foundry Models<br/>Data Zone EU deployment"]
+  FND -->|Retrieve| SRCH["Azure AI Search<br/>RAG index"]
+  FND -->|Agent memory| COS["Azure Cosmos DB"]
+  ING["Document ingestion<br/>PDF DOCX XLSX PPTX HTML"] --> STG["Azure Storage"]
+  STG --> IDX["Indexing pipeline"] --> SRCH
+  APP --> KV["Azure Key Vault"]
+  APP --> MON["Azure Monitor + App Insights"]

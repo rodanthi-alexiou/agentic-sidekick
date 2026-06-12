@@ -21,7 +21,7 @@ The Microsoft Learn MCP server (`https://learn.microsoft.com/api/mcp`) is wired 
 | About to assert "Foundry supports X in region Y" | `microsoft_docs_search("Azure AI Foundry region availability X Y")` |
 | About to recommend an AVM module | `microsoft_docs_search("avm/res/<service> Azure Verified Module")` |
 | Customer asks "is feature Z GA?" | `microsoft_docs_search("<feature Z> Azure GA preview status")` |
-| Citing a pattern (AI LZ, AI Hub, etc.) | `microsoft_docs_search("<pattern name> Azure landing zone")` then `fetch` the canonical page |
+| Citing a pattern (AI LZ, AI Gateway, etc.) | `microsoft_docs_search("<pattern name> Azure landing zone")` then `fetch` the canonical page |
 | About to claim a price or SKU | Microsoft Learn covers capability, not price. Fall back to a pricing MCP (Phase 2) or note `[price verification needed]` |
 
 ## How to cite

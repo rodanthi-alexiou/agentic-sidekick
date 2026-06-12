@@ -65,7 +65,6 @@ Every agent writes its artifact to `agent-output/<engagement-name>/` using the n
 |---------|----------|
 | **AI Landing Zone for Foundry** | Enterprise or regulated workload; CAF Platform LZ exists or is planned; private networking required |
 | **AI Gateway Landing Zone** | Multiple consumers, multi-model routing, central token quotas, or cross-team access governance (APIM layer — complements Foundry LZ) |
-| **AI Hub Landing Zone** ⚠️ | Customer has existing Hub-Project investment they cannot migrate. Greenfield use is de-recommended by current Microsoft guidance. |
 | **Lightweight Accelerator** | 4–8 week PoC, single team, no compliance scope, explicit willingness to rebuild for production |
 | **Custom Build** | Edge, sovereign, on-prem hybrid, or highly specialised SKUs where no LZ fits |
 

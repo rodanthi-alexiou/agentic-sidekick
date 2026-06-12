@@ -35,7 +35,6 @@ When discussing Azure AI patterns, use these exact names and link to their autho
 
 - **AI Landing Zone for Foundry** — Foundry-centric application landing zone (Bicep + Terraform, AVM-based)
 - **AI Gateway Landing Zone** — APIM-fronted gateway pattern in front of Foundry/AOAI
-- **AI Hub Landing Zone** — older Hub-and-Project model (still valid for some scenarios)
 - **Lightweight Accelerator** — single-resource-group quickstart, not enterprise-scale
 - **Custom Build** — bespoke architecture when no LZ fits
 

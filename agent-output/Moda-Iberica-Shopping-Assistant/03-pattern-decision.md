@@ -27,15 +27,15 @@ Scoring: 1 (poor fit) — 5 (excellent fit). See `.github/skills/ai-landing-zone
 
 **Scoring deferred:** until the red flags are resolved, any numeric scoring would embed assumptions that could flip the recommendation.
 
-| Criterion              | AI LZ Foundry | AI Gateway LZ | AI Hub LZ | Accelerator | Custom |
-|------------------------|---------------|---------------|-----------|-------------|--------|
-| Fit to requirements    | TBD           | TBD           | TBD       | TBD         | TBD    |
-| Time to prod           | TBD           | TBD           | TBD       | TBD         | TBD    |
-| Operational complexity | TBD           | TBD           | TBD       | TBD         | TBD    |
-| Cost predictability    | TBD           | TBD           | TBD       | TBD         | TBD    |
-| Governance maturity    | TBD           | TBD           | TBD       | TBD         | TBD    |
-| Exit cost              | TBD           | TBD           | TBD       | TBD         | TBD    |
-| **Score (sum)**        | TBD           | TBD           | TBD       | TBD         | TBD    |
+| Criterion              | AI LZ Foundry | AI Gateway LZ | Accelerator | Custom |
+|------------------------|---------------|---------------|-------------|--------|
+| Fit to requirements    | TBD           | TBD           | TBD         | TBD    |
+| Time to prod           | TBD           | TBD           | TBD         | TBD    |
+| Operational complexity | TBD           | TBD           | TBD         | TBD    |
+| Cost predictability    | TBD           | TBD           | TBD         | TBD    |
+| Governance maturity    | TBD           | TBD           | TBD         | TBD    |
+| Exit cost              | TBD           | TBD           | TBD         | TBD    |
+| **Score (sum)**        | TBD           | TBD           | TBD         | TBD    |
 
 ---
 
@@ -47,7 +47,6 @@ Use this table in the next customer workshop to converge quickly once red flags 
 |---|---|---|
 | "We need private networking / enterprise governance and we’re willing to build on Azure landing zones" | **AI Landing Zone for Foundry** | Microsoft provides a baseline Foundry chat reference architecture designed for deployment inside an Azure landing zone, including private endpoints and an application-vs-platform landing zone split ([source](https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone)). |
 | "We need a central throttling / quota / policy enforcement layer in front of one or many model endpoints" | **AI Gateway Landing Zone** (APIM-fronted) | The API Management landing zone accelerator includes a generative AI gateway scenario and points to the gateway offloading pattern for GenAI model access ([source](https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/app-platform/api-management/landing-zone-accelerator#generative-ai-gateway-scenario); [source](https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-guide)). |
-| "We need hub-and-project sharing across multiple teams" | **AI Hub Landing Zone** | Foundry (classic) describes hubs as a way to share configurations like data connections across projects and centrally manage security settings and spend ([source](https://learn.microsoft.com/azure/foundry-classic/how-to/hub-create-projects#create-a-hub-project); [source](https://learn.microsoft.com/azure/foundry-classic/concepts/ai-resources#create-a-hub-based-project)). |
 | "This must ship fast as a pilot and we accept rework before full production hardening" | **Lightweight Accelerator** | Microsoft documents the concept of application landing zone accelerators to speed deployment of workloads in application landing zones ([source](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/#application-landing-zone-accelerators)). *Note:* a Moda Ibérica-specific “single-resource-group accelerator” pattern is not uniquely defined on Microsoft Learn; treat any such approach as a time-boxed pilot design and re-validate before production. |
 | "We have constraints none of the above patterns can satisfy (sovereign cloud / on-prem inference / strict egress restrictions)" | **Custom Build** | When the environment requires constraints outside standard landing zone assumptions, you must explicitly design for those constraints and verify service connectivity/egress requirements ([source](https://learn.microsoft.com/azure/cloud-adoption-framework/ai/ready#establish-an-ai-foundation)). |
 
@@ -81,7 +80,6 @@ This engagement cannot defensibly pick a pattern yet. The gating items materiall
 
 ## Patterns eliminated
 
-- **AI Hub Landing Zone**: Not eliminated, but needs confirmation that Moda Ibérica truly needs shared hub governance across multiple teams/projects, and whether they are using Foundry (classic) hub model intentionally ([source](https://learn.microsoft.com/azure/foundry-classic/concepts/ai-resources#create-a-hub-based-project)).
 - **Lightweight Accelerator**: Not eliminated, but cannot be selected as a production pattern until “pilot vs production” scope and governance requirements are explicit ([source](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/#application-landing-zone-accelerators)).
 - **Custom Build**: Not eliminated, but should only be chosen if the customer has a disqualifier constraint that prevents using the landing zone patterns (for example, strict egress prohibitions or on-prem-only inference) ([source](https://learn.microsoft.com/azure/cloud-adoption-framework/ai/ready#establish-an-ai-foundation)).
 
@@ -118,8 +116,6 @@ Items deliberately deferred to the Architecture agent (Phase 2):
 | APIM landing zone accelerator includes GenAI gateway scenario | https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/app-platform/api-management/landing-zone-accelerator#generative-ai-gateway-scenario | 2026-05-27 |
 | Gateway offloading pattern for Azure OpenAI and other LMs | https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-guide | 2026-05-27 |
 | AI gateway capabilities in Azure API Management | https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities | 2026-05-27 |
-| Foundry hubs/projects relationship and hub purpose (classic) | https://learn.microsoft.com/azure/foundry-classic/how-to/hub-create-projects#create-a-hub-project | 2026-05-27 |
-| Hub resources overview (classic) | https://learn.microsoft.com/azure/foundry-classic/concepts/ai-resources#create-a-hub-based-project | 2026-05-27 |
 | Establish an AI foundation (CAF) | https://learn.microsoft.com/azure/cloud-adoption-framework/ai/ready#establish-an-ai-foundation | 2026-05-27 |
 
 ---

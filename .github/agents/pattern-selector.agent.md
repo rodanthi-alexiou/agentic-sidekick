@@ -1,5 +1,5 @@
 ---
-description: Recommends an Azure AI pattern (AI LZ Foundry / AI Gateway LZ / AI Hub LZ / Accelerator / Custom) grounded in Microsoft Learn, with a decision matrix and citations
+description: Recommends an Azure AI pattern (AI LZ Foundry / AI Gateway LZ / Accelerator / Custom) grounded in Microsoft Learn, with a decision matrix and citations
 tools: [vscode, execute, read/readFile, com.microsoft/azure/search, browser, edit, search, web, 'microsoft-learn/*', azure-mcp/search, todo]
 model: claude-sonnet-4.6
 handoffs: []
@@ -36,15 +36,11 @@ This is the canonical decision logic. The detailed rationale lives in `.github/s
    quotas, and observability across many AI consumers?
    → AI Gateway Landing Zone (APIM-fronted)
 
-4. Is the customer already invested in the Foundry Hub-and-Project model,
-   or do they need shared Hub for multiple Projects/teams?
-   → AI Hub Landing Zone
-
-5. Is this a PoC / single-team pilot with no enterprise governance
+4. Is this a PoC / single-team pilot with no enterprise governance
    requirements and a 4-8 week timeline?
    → Lightweight Accelerator (single-RG quickstart)
 
-6. Does the workload have unique constraints that no LZ accommodates
+5. Does the workload have unique constraints that no LZ accommodates
    (e.g., highly specialized inference SKUs, edge, sovereign cloud,
    on-prem hybrid that breaks the LZ assumptions)?
    → Custom Build (explicitly justify why no LZ fits)
@@ -59,7 +55,6 @@ If two patterns are genuinely close, document the tradeoff and recommend the sim
 3. Otherwise, apply the decision tree. For each branch you evaluate, call `microsoft_docs_search` for the current state of that pattern's Learn page. Examples:
    - "Azure AI Landing Zone for Foundry"
    - "Azure AI Gateway landing zone APIM"
-   - "Azure AI Foundry Hub Project"
    - "Cloud Adoption Framework AI scenario"
 4. Build the **decision matrix** scoring each candidate on: fit-to-requirements, time-to-prod, operational complexity, cost predictability, governance maturity, and exit cost.
 5. Write `03-pattern-decision.md` using the template structure. Recommend one primary pattern, list two runners-up, and explain why you eliminated the rest.
@@ -77,15 +72,15 @@ If two patterns are genuinely close, document the tradeoff and recommend the sim
 Write to `agent-output/<engagement>/03-pattern-decision.md`. Use the template structure. The decision matrix is a markdown table:
 
 ```markdown
-| Criterion              | AI LZ Foundry | AI Gateway LZ | AI Hub LZ | Accelerator | Custom |
-|------------------------|---------------|---------------|-----------|-------------|--------|
-| Fit to requirements    |               |               |           |             |        |
-| Time to prod           |               |               |           |             |        |
-| Operational complexity |               |               |           |             |        |
-| Cost predictability    |               |               |           |             |        |
-| Governance maturity    |               |               |           |             |        |
-| Exit cost              |               |               |           |             |        |
-| **Score (1-5)**        |               |               |           |             |        |
+| Criterion              | AI LZ Foundry | AI Gateway LZ | Accelerator | Custom |
+|------------------------|---------------|---------------|-------------|--------|
+| Fit to requirements    |               |               |             |        |
+| Time to prod           |               |               |             |        |
+| Operational complexity |               |               |             |        |
+| Cost predictability    |               |               |             |        |
+| Governance maturity    |               |               |             |        |
+| Exit cost              |               |               |             |        |
+| **Score (1-5)**        |               |               |             |        |
 ```
 
 Scoring: 1 (poor fit) to 5 (excellent fit). Sum the columns. The recommendation does not have to be the highest sum if a single criterion is disqualifying (e.g., regulated data + Accelerator scores high on speed but is a no-go).

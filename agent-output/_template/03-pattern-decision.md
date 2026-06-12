@@ -22,7 +22,7 @@ This pre-sales decision is intended for:
 
 ## Recommendation
 
-**Recommended pattern:** [AI Landing Zone for Foundry / AI Gateway LZ / AI Hub LZ / Lightweight Accelerator / Custom Build]
+**Recommended pattern:** [AI Landing Zone for Foundry / AI Gateway LZ / Lightweight Accelerator / Custom Build]
 
 **One-line rationale:** [why this pattern wins for this customer]
 
@@ -34,15 +34,15 @@ This pre-sales decision is intended for:
 
 Scoring: 1 (poor fit) — 5 (excellent fit). See `.github/skills/ai-landing-zone-decision/SKILL.md` for the rubric.
 
-| Criterion              | AI LZ Foundry | AI Gateway LZ | AI Hub LZ | Accelerator | Custom |
-|------------------------|---------------|---------------|-----------|-------------|--------|
-| Fit to requirements    |               |               |           |             |        |
-| Time to prod           |               |               |           |             |        |
-| Operational complexity |               |               |           |             |        |
-| Cost predictability    |               |               |           |             |        |
-| Governance maturity    |               |               |           |             |        |
-| Exit cost              |               |               |           |             |        |
-| **Score (sum)**        |               |               |           |             |        |
+| Criterion              | AI LZ Foundry | AI Gateway LZ | Accelerator | Custom |
+|------------------------|---------------|---------------|-------------|--------|
+| Fit to requirements    |               |               |             |        |
+| Time to prod           |               |               |             |        |
+| Operational complexity |               |               |             |        |
+| Cost predictability    |               |               |             |        |
+| Governance maturity    |               |               |             |        |
+| Exit cost              |               |               |             |        |
+| **Score (sum)**        |               |               |             |        |
 
 ---
 

@@ -1,0 +1,12 @@
+graph LR
+  USER["EU users"] --> AGW["Application Gateway + WAF<br/>public IP + DDoS Protection"]
+  AGW --> APPSUB["snet-appService<br/>App Service VNet integration"]
+  APPSUB --> PE["snet-privateEndpoints"]
+  PE --> PEFND["PE Foundry"]
+  PE --> PESRCH["PE AI Search"]
+  PE --> PESTG["PE Storage"]
+  PE --> PEKV["PE Key Vault"]
+  PE --> PECOS["PE Cosmos DB"]
+  EGR["snet-agentsEgress<br/>UDR 0.0.0.0/0"] -->|egress inspection| FW["Azure Firewall<br/>connectivity hub"]
+  FW --> NET["Internet / external knowledge"]
+  PE -.private DNS.-> DNS["Private DNS zones<br/>DNS Private Resolver"]
