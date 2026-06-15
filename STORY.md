@@ -1,5 +1,7 @@
 # The Bigger Story — Where This Template Fits
 
+![Five-stage delivery flow — Base, Standardize, Plan, Land, Deploy — with the Plan stage highlighted](images/story-journey-banner.png)
+
 This repository (**AI Workload Planner**) is one stage in a larger partner journey: taking a customer from *"we want to do something with AI"* all the way to a governed, multi-tenant workload running on Azure. Each stage has its own assets, and each is driven by GitHub Copilot — skills, agents, and ready-to-paste prompts.
 
 This file is the **single map** of that journey. Use it to orient a partner, decide where to jump in, and find the exact Copilot asset that automates each step.
