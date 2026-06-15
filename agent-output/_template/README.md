@@ -6,6 +6,7 @@ This folder is the starting point for every new customer engagement. The `/start
 
 | File | Owned by | Description |
 |------|----------|-------------|
+| `00-evidence-pack.md` | Evidence Pack agent | Source-linked Azure capability evidence answering a customer RFP — one verified table per requirement area (optional starting point) |
 | `01-requirements.md` | Requirements agent | Structured intake — business context, users, data, NFRs, compliance, delivery preferences |
 | `02-challenges.md` | Challenger agent | Socratic stress-test of `01-requirements.md` — questions, red flags |
 | `03-pattern-decision.md` | Pattern Selector agent | Recommended Azure AI pattern with decision matrix and Learn citations |
@@ -13,6 +14,7 @@ This folder is the starting point for every new customer engagement. The `/start
 | `05-cost-model.md` | Cost agent (Phase 2) | PoC / pilot / prod cost scenarios |
 | `06-rfp.md` | RFP agent (Phase 3) | RFP-ready section pack |
 | `07-plan.md` | Plan agent (Phase 3) | Phased rollout, RACI, prerequisites |
+| `08-developer-guide.md` | Developer Guide agent (Phase 3) | Implementation guidance — Foundry models, connectivity, tool integration, code examples |
 
 ## Conventions
 

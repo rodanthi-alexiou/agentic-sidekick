@@ -4,7 +4,7 @@ tools: ['edit', 'search', 'microsoft-learn']
 model: claude-sonnet-4.6
 handoffs:
   - label: Hand off to Challenger
-    agent: challenger
+    agent: 02-challenger
     prompt: Read agent-output/<engagement>/01-requirements.md and produce 02-challenges.md. Stress-test every assumption socratically.
     send: false
 ---

@@ -4,7 +4,7 @@ tools: [execute, read/readFile, agent, com.microsoft/azure/search, browser, edit
 model: claude-sonnet-4.6
 handoffs:
   - label: Hand off to Pattern Selector
-    agent: pattern-selector
+    agent: 03-pattern-selector
     prompt: Read 01-requirements.md and 02-challenges.md. Recommend an Azure AI pattern and write 03-pattern-decision.md with citations to Microsoft Learn.
     send: false
 ---

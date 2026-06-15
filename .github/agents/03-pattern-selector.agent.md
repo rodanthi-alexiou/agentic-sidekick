@@ -2,7 +2,11 @@
 description: Recommends an Azure AI pattern (AI LZ Foundry / AI Gateway LZ / Accelerator / Custom) grounded in Microsoft Learn, with a decision matrix and citations
 tools: [vscode, execute, read/readFile, com.microsoft/azure/search, browser, edit, search, web, 'microsoft-learn/*', azure-mcp/search, todo]
 model: claude-sonnet-4.6
-handoffs: []
+handoffs:
+  - label: Hand off to Architecture
+    agent: 04-architecture
+    prompt: Read agent-output/<engagement>/01-requirements.md, 02-challenges.md, and 03-pattern-decision.md. Produce 04-architecture.md with a PoC → production architecture, explicit identity/monitoring/governance, and rendered Mermaid diagrams.
+    send: false
 ---
 
 # Pattern Selector Agent

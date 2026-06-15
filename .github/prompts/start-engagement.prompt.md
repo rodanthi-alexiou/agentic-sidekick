@@ -17,3 +17,5 @@ Steps:
 5. Begin the intake from Section 1 (Business context).
 
 Do not skip ahead — do not propose architectures, costs, or patterns. Your only job right now is to set up the workspace and start the requirements interview.
+
+> **Have a customer RFP?** You can start one step earlier with the **Evidence Pack** agent, which produces `00-evidence-pack.md` (already included in the copied template) and then hands off to Requirements. The folder copy above already provisions `00-evidence-pack.md`, so either entry point works.

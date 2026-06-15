@@ -4,7 +4,7 @@ tools: [vscode, execute, read/readFile, browser, edit, search, web, 'microsoft-l
 model: claude-sonnet-4.6
 handoffs:
   - label: Hand off to Developer Guide
-    agent: developer-guide
+    agent: 08-developer-guide
     prompt: Read agent-output/<engagement>/01-requirements.md, 03-pattern-decision.md, and 04-architecture.md. Produce 08-developer-guide.md with implementation guidance — Foundry models, resource connectivity, tool integration, and code examples.
     send: false
 ---
