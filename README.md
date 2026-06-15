@@ -10,50 +10,10 @@ Built on GitHub Copilot custom agents, skills, and the Microsoft Learn MCP serve
 
 Each agent hands off to the next. You stay in VS Code throughout.
 
-```
-Customer conversation
-        │
-        ▼
-┌───────────────────┐
-│  1. Requirements  │  Structured intake → 01-requirements.md
-│     (Phase 1)     │  Business outcome, users, data, latency,
-└────────┬──────────┘  sovereignty, compliance, IaC preference
-         │ hand off
-         ▼
-┌───────────────────┐
-│  2. Challenger    │  Socratic stress-test → 02-challenges.md
-│     (Phase 1)     │  Surfaces ambiguities before any design work
-└────────┬──────────┘  begins. Read-only — never edits requirements.
-         │ hand off
-         ▼
-┌───────────────────┐
-│  3. Pattern       │  Azure AI pattern decision → 03-pattern-decision.md
-│     Selector      │  Recommends one of five patterns (see below),
-│     (Phase 1)     │  decision matrix, and live Microsoft Learn citations.
-└────────┬──────────┘
-         │ hand off
-         ▼
-┌───────────────────┐
-│  4. Architecture  │  Reference architecture → 04-architecture.md
-│     (Phase 2)     │  PoC → pilot → production scaling path, identity,
-└────────┬──────────┘  networking, security, observability. Mermaid
-         │             diagrams rendered to PNG under images/.
-         ▼
-┌───────────────────┐  ┌──────────────────────────────────────────────┐
-│  5. Cost Model    │  │ Three-scenario cost estimate (PoC / pilot /  │
-│     (planned)     │  │ prod) against Azure Pricing.                 │
-└────────┬──────────┘  └──────────────────────────────────────────────┘
-         ▼
-┌───────────────────┐  ┌──────────────────────────────────────────────┐
-│  6. RFP           │  │ Scope, deliverables, assumptions, pricing    │
-│     (planned)     │  │ model — ready to paste into a proposal.      │
-└────────┬──────────┘  └──────────────────────────────────────────────┘
-         ▼
-┌───────────────────┐  ┌──────────────────────────────────────────────┐
-│  7. Plan          │  │ Phased rollout, RACI, prerequisites,         │
-│     (planned)     │  │ success gates.                               │
-└───────────────────┘  └──────────────────────────────────────────────┘
-```
+![delivery-flow](images/image-recs.png)
+
+
+> **Steps 5–7 (Cost, RFP, Plan)** are reserved in the numbered convention and ship as templates only; their agents are planned. The Developer Guide is numbered `08` so the cost/RFP/plan slots stay open.
 
 Every agent writes its artifact to `agent-output/<engagement-name>/` using the numbered convention. Nothing is shared with the customer until you review it.
 
@@ -74,10 +34,11 @@ Every agent writes its artifact to `agent-output/<engagement-name>/` using the n
 
 | Role | Primary artifact | What they take away |
 |------|-----------------|---------------------|
+| Commercial / bid lead | 00-evidence-pack | Source-linked capability evidence to paste into the RFP response |
 | Solution / pre-sales architect | 03-pattern-decision, 04-architecture | Decision narrative, risks, gates, next workshop agenda |
-| App developer / lead engineer | 04-architecture | Integration surfaces, tool calls, data flows, failure modes |
+| App developer / lead engineer | 04-architecture, 08-developer-guide | Integration surfaces, tool calls, data flows, code examples |
 | Infra / platform engineer | 04-architecture | Networking stance, identity boundaries, environment separation |
-| Security / compliance lead | 04-architecture | Data handling, sovereignty, auditability, retention |
+| Security / compliance lead | 00-evidence-pack, 04-architecture | Data handling, sovereignty, auditability, retention |
 | Commercial / account team | 05-cost-model, 06-rfp | Three-scenario pricing, RFP-ready scope and assumptions |
 
 ---
@@ -93,8 +54,10 @@ Every agent writes its artifact to `agent-output/<engagement-name>/` using the n
    /start-engagement Contoso-RAG-Knowledge-Base
    ```
 
+   > Have a customer RFP already? Start one step earlier: select the **Evidence Pack** agent, point it at the RFP, and it produces `00-evidence-pack.md`, then hands off to Requirements.
+
 5. The agent creates `agent-output/Contoso-RAG-Knowledge-Base/` and guides you through intake. When it's done, click **Hand off to Challenger**.
-6. Follow the handoff chain — Challenger → Pattern Selector → Architecture — reviewing and resolving `[TBD — ask customer]` items between steps.
+6. Follow the handoff chain — Requirements → Challenger → Pattern Selector → Architecture → Developer Guide — reviewing and resolving `[TBD — ask customer]` items between steps.
 
 ---
 
@@ -102,13 +65,16 @@ Every agent writes its artifact to `agent-output/<engagement-name>/` using the n
 
 ```
 .github/
-  agents/                        # Custom Copilot agents
-    requirements.agent.md
-    challenger.agent.md
-    pattern-selector.agent.md
-    architecture.agent.md
+  agents/                        # Custom Copilot agents (numbered to match artifacts)
+    00-evidence-pack.agent.md
+    01-requirements.agent.md
+    02-challenger.agent.md
+    03-pattern-selector.agent.md
+    04-architecture.agent.md
+    08-developer-guide.agent.md
   skills/                        # Reusable domain knowledge loaded by agents
     ai-landing-zone-decision/SKILL.md
+    azure-evidence/SKILL.md
     ms-learn-grounding/SKILL.md
   instructions/                  # File-scoped rules (glob-targeted)
     agent-output.instructions.md
@@ -118,7 +84,7 @@ Every agent writes its artifact to `agent-output/<engagement-name>/` using the n
 .vscode/
   mcp.json                       # Microsoft Learn MCP server wiring
 agent-output/
-  _template/                     # Numbered artifact templates (01–07)
+  _template/                     # Numbered artifact templates (00–08)
   <engagement-name>/             # One folder per customer engagement
 AGENTS.md                        # Agent roster and hand-off rules
 ```
@@ -129,8 +95,9 @@ AGENTS.md                        # Agent roster and hand-off rules
 
 | Phase | Agents | Artifacts |
 |-------|--------|-----------|
-| 1 | Requirements, Challenger, Pattern Selector | `01` `02` `03` — **included** |
+| 1 | Evidence Pack, Requirements, Challenger, Pattern Selector | `00` `01` `02` `03` — **included** |
 | 2 | Architecture | `04` — **included** |
+| 3 | Developer Guide | `08` — **included** |
 | 2 | Cost & Sizing | `05` — templates only, agent planned |
 | 3 | RFP, Plan | `06` `07` — templates only, agents planned |
 | 3 | IaC scaffolding | Bicep/Terraform gated by pattern decision — planned |
@@ -147,11 +114,13 @@ AGENTS.md                        # Agent roster and hand-off rules
 
 | What to change | Where |
 |---------------|-------|
+| Evidence verification standard / source priority | `.github/skills/azure-evidence/SKILL.md` |
 | AI LZ pattern decision rules | `.github/skills/ai-landing-zone-decision/SKILL.md` |
-| Challenger tone (socratic vs. evaluative) | `.github/agents/challenger.agent.md` |
-| Architecture depth / sections | `.github/agents/architecture.agent.md` |
+| Challenger tone (socratic vs. evaluative) | `.github/agents/02-challenger.agent.md` |
+| Architecture depth / sections | `.github/agents/04-architecture.agent.md` |
 | Add an MCP server (Azure Pricing, etc.) | `.vscode/mcp.json` + each agent's `tools:` list |
 
-## License
 
-MIT (suggested). Add your organization's license file before sharing externally.
+## The bigger story
+
+This template is **stage 3 (Plan)** of a five-stage partner journey — Learn → Standardize → **Plan** → Land → Deploy. See **[STORY.md](STORY.md)** for the full map: the assets, Microsoft Learn links, and Copilot skills/agents/prompts that drive each stage, plus how this repo hands off to [APEX](https://github.com/jonathan-vella/apex) (and its work-in-progress AI-first variant, [APEX AI](https://github.com/rodanthi-alexiou/apex-ai)) for deploy-ready IaC. 
